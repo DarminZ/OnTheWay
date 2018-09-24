@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>use-flex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header,.footer {
+            background: #ccc;
+            height: 50px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+        }
+        .left, .right {
+            min-width: 200px;
+            background: lightcyan;
+            height: 400px;
+        }
+        .middle {
+            min-width: 700px;
+            background: lightblue;
+            height: 400px;
+        }
+        @media screen and (max-width: 899px){
+            .middle {
+                order: 1;
+                min-width: 100%;
+            }
+            .left {
+                order: 2;
+                min-width: 100%;
+            }
+            .right {
+                order: 3;
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header">header</div>
+</header>
+<div class="container">
+    <div class="left">left</div>
+    <div class="middle">mid</div>
+    <div class="right">right</div>
+</div>
+<footer>
+    <div class="footer">footer</div>
+</footer>
+</body>
+</html>

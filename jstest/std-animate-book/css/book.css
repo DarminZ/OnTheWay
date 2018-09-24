@@ -1,0 +1,124 @@
+/* Docs style */
+
+#canvas{
+	width: 960px;
+	height: 600px;
+	margin: 100px 50%;
+	right: -471px;
+	position: fixed;
+	z-index: 1;
+}
+
+#book-zoom{
+	-webkit-transition: -webkit-transform 1s;
+	-moz-transition: -moz-transform 1s;
+	-ms-transition: -ms-transform 1s;
+	-o-transition: -o-transform 1s;
+	transition: transform 1s;
+}
+
+.animated{
+	-webkit-transition:margin-left 0.2s ease-in-out;
+	-moz-transition:margin-left 0.2s ease-in-out;
+	-o-transition:margin-left 0.2s ease-in-out;
+	-ms-transition:margin-left 0.2s ease-in-out;
+	transition:margin-left 0.2s ease-in-out;
+}
+
+.std-docs{
+	width:942px;
+	height:600px;
+}
+
+.std-docs .page{
+	width:471px;
+	height:600px;
+	background:white;
+
+	-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	-ms-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	-o-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+.std-docs .hard{
+	background-image:url(../pages/book-cover.png);
+	background-size: 100% 100%;
+}
+.std-docs .p2{
+	background-image:url(../pages/1.png);
+	background-size: 100% 100%;
+}
+
+.std-docs .p8{
+	background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+	background-image:-webkit-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-moz-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-ms-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-o-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:linear-gradient(left, #fff 95%, #dadada 100%);
+}
+
+.std-docs .p9{
+	background-image:url(../pages/8.png);
+	background-size: 100% 100%;
+}
+
+.std-docs .p10{
+	background-image:url(../pages/book-bottom.png);
+	background-size: 100% 100%;
+}
+
+.std-docs .even .gradient{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-image:url(../pics/right-border.png);
+	background-position:right top;
+	background-repeat: repeat-y;
+}
+
+.std-docs .odd .gradient{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-image:url(../pics/left-border.png);
+	background-position:left top;
+	background-repeat: repeat-y;
+}
+
+.std-docs .page-wrapper{
+	-webkit-perspective:2000px;
+	-moz-perspective: 2000px;
+	-ms-perspective: 2000px;
+	perspective: 2000px;
+}
+
+
+.std-docs .loader{
+	background-image:url(../pics/loader.gif);
+	width:22px;
+	height:22px;
+	position:absolute;
+	top:280px;
+	left:219px;
+}
+
+.std-docs .shadow{
+	-webkit-transition: -webkit-box-shadow 0.5s;
+	-moz-transition: -moz-box-shadow 0.5s;
+	-o-transition: -webkit-box-shadow 0.5s;
+	-ms-transition: -ms-box-shadow 0.5s;
+
+	-webkit-box-shadow:0 0 20px #ccc;
+	-moz-box-shadow:0 0 20px #ccc;
+	-o-box-shadow:0 0 20px #ccc;
+	-ms-box-shadow:0 0 20px #ccc;
+	box-shadow:0 0 20px #ccc;
+}
+

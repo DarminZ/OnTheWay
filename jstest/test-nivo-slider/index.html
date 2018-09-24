@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nivo slider</title>
+    <script type="text/javascript" src="jquery.min.1.7.js"></script>
+    <script type="text/javascript" src="jquery.nivo.slider.js"></script>
+    <link rel="stylesheet" href="nivo-slider.min.css">
+    <style type="text/css">
+        body{
+            width: 100%;
+            margin: 0;
+            background-image: url("images/img-media-bg.png");
+            background-size: 100%;
+        }
+        .nivo-directionNav{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="slider-wrapper" style="width: 100%;">
+    <div id="slider" class="nivoSlider">
+        <img src="images/img-media1.png" alt="">
+        <img src="images/img-media2.png" alt="">
+        <img src="images/img-media3.png" alt="">
+        <img src="images/img-media4.png" alt="">
+        <img src="images/img-media5.png" alt="">
+        <img src="images/img-media6.png" alt="">
+        <img src="images/img-media7.png" alt="">
+        <img src="images/img-media8.png" alt="">
+        <img src="images/img-media9.png" alt="">
+    </div>
+</div>
+<button id="btn">btn</button>
+<script type="text/javascript">
+    $("#btn").click(function() {
+        console.log("safadf");
+        $('#slider').nivoSlider({
+            pauseTime:5000,
+            controlNav:false,
+            manualAdvance:true,
+            slideshowEnd: function () {
+                $('#slider').remove()
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "use-node",
+  "version": "1.0.0",
+  "description": "use-node-create-server",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "nodejs-websocket": "^1.7.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1"
+  }
+}

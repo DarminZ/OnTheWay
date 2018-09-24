@@ -1,0 +1,18 @@
+<div id="zm-app">
+    <input type="text" z-model="word">
+    {{word}}
+</div>
+
+<script src="./js/observer.js"></script>
+<script src="./js/watcher.js"></script>
+<script src="./js/compile.js"></script>
+<script src="./js/zm.js"></script>
+
+<script>
+    var vm = new Zm({
+        el: '#zm-app',
+        data: {
+            word: 'Hello World'
+        }
+    })
+</script>

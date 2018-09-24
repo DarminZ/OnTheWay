@@ -1,0 +1,162 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="js/lib/jquery.min.1.7.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-ui-1.8.20.custom.min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="js/lib/modernizr.2.5.3.min.js"></script>
+	<script type="text/javascript" src="js/lib/hash.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.nivo.slider.pack.js"></script>
+	<link rel="stylesheet" href="css/nivo-slider.min.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="main">
+	<div id="canvas">
+		<div id="book-zoom">
+			<div class="std-docs">
+				<div class="hard p1"></div>
+				<div class="hard p2"></div>
+				<!--p3-p8自动配置-->
+				<div class="hard p9"></div>
+				<div class="hard p10"></div>
+			</div>
+		</div>
+	</div>
+	<div class="play">
+		<button class="btn-play"><img src="pics/Play.png"/>  </button>
+	</div>
+	<div class="image-show">
+		<h2 class="image-title"></h2>
+		<img class="img-ldps" src="pics/img-ldps.png"/>
+		<img class="img-dzb" src="pics/img-dzb.png"/>
+		<img class="img-wjlc" src="pics/img-wjlc.png"/>
+		<img class="img-bzhmk img-bzhmk1" src="pics/img-bzhmk1.png"/>
+		<img class="img-bzhmk img-bzhmk-wj1" src="pics/img-bzhmk-wj1.png"/>
+		<img class="img-bzhmk img-bzhmk-wj2" src="pics/img-bzhmk-wj2.png"/>
+		<img class="img-bzhmk img-bzhmk-wj3" src="pics/img-bzhmk-wj3.png"/>
+		<img class="img-bzhmk img-bzhmk-wj4" src="pics/img-bzhmk-wj4.png"/>
+		<img class="img-bzhmk img-bzhmk-wj5" src="pics/img-bzhmk-wj5.png"/>
+		<img class="img-bzhmk img-bzhmk-wj6" src="pics/img-bzhmk-wj6.png"/>
+		<img class="img-bzhmk img-bzhmk-wj7" src="pics/img-bzhmk-wj7.png"/>
+		<img class="img-bzhmk img-bzhmk-wj8" src="pics/img-bzhmk-wj8.png"/>
+		<img class="img-dsj img-dsj-bg img-dsj1" src="pics/img-dsj1.png"/>
+		<img class="img-dsj img-dsj-part1 img-dsj2" src="pics/img-dsj2.png"/>
+		<img class="img-dsj img-dsj-part1 img-dsj3" src="pics/img-dsj3.png"/>
+		<img class="img-dsj img-dsj-part1 img-dsj4" src="pics/img-dsj4.png"/>
+		<img class="img-dsj img-dsj-part2 img-dsj5" src="pics/img-dsj5.png"/>
+		<img class="img-dsj img-dsj-part2 img-dsj6" src="pics/img-dsj6.png"/>
+		<img class="img-dsj img-dsj-part2 img-dsj7" src="pics/img-dsj7.png"/>
+		<img class="img-bzhtx img-bzhtx-bg" src="pics/img-bzhtx-bg.png"/>
+		<img class="img-bzhtx img-bzhtx-bg2" src="pics/img-bzhtx-bg2.png"/>
+		<img class="img-bzhtx img-bzhtx-logo img-bzhtx1" src="pics/img-bzhtx1.png"/>
+		<img class="img-bzhtx img-bzhtx-logo img-bzhtx2" src="pics/img-bzhtx2.png"/>
+		<img class="img-bzhtx img-bzhtx-logo img-bzhtx3" src="pics/img-bzhtx3.png"/>
+		<img class="img-bzhtx img-bzhtx-logo img-bzhtx4" src="pics/img-bzhtx4.png"/>
+		<img class="img-bzhtx img-bzhtx-logo img-bzhtx5" src="pics/img-bzhtx5.png"/>
+		<img class="img-bzhtx img-bzhtx-logo img-bzhtx6" src="pics/img-bzhtx6.png"/>
+		<img class="img-bzhtx img-bzhtx-wj img-bzhtx-wj1" src="pics/img-bzhtx-wj1.png"/>
+		<img class="img-bzhtx img-bzhtx-wj img-bzhtx-wj2" src="pics/img-bzhtx-wj2.png"/>
+		<img class="img-bzhtx img-bzhtx-wj img-bzhtx-wj3" src="pics/img-bzhtx-wj3.png"/>
+		<img class="img-bzhtx img-bzhtx-wj img-bzhtx-wj4" src="pics/img-bzhtx-wj4.png"/>
+		<div class="media-play">
+            <img class="img-media-bg" src="pics/img-media-bg.png">
+            <div id="slider" class="nivoSlider">
+                <img src="pics/img-media1.png">
+                <img src="pics/img-media2.png">
+                <img src="pics/img-media3.png">
+                <img src="pics/img-media4.png">
+                <img src="pics/img-media5.png">
+                <img src="pics/img-media6.png">
+                <img src="pics/img-media7.png">
+                <img src="pics/img-media8.png">
+                <img src="pics/img-media9.png">
+            </div>
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+// 配置翻页插件 //
+function loadApp() {
+
+	var flipbook = $('.std-docs');
+
+	// Check if the CSS was already loaded
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+
+	// URIs
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+			if (page!==undefined) {
+				if ($('.std-docs').turn('is'))
+					$('.std-docs').turn('page', page);
+			}
+		},
+		nop: function(path) {
+			if ($('.std-docs').turn('is'))
+				$('.std-docs').turn('page', 1);
+		}
+	});
+
+	// Arrows
+	$(document).keydown(function(e){
+		var previous = 37, next = 39;
+		switch (e.keyCode) {
+			case previous:
+				$('.std-docs').turn('previous');
+			break;
+			case next:
+				$('.std-docs').turn('next');
+			break;
+		}
+
+	});
+
+	// Create the flipbook
+
+	flipbook.turn({
+		elevation: 50,
+		acceleration: false,
+		gradients: true,
+		autoCenter: true,
+		duration: 2000, //翻页时间
+		pages: 10, //总页数
+		when: {
+		  missing: function (e, pages) {
+			for (var i = 0; i < pages.length; i++)
+				addPage(pages[i], $(this));
+		 }
+		}
+	});
+
+	flipbook.addClass('animated');
+
+	// Show canvas
+	$('#canvas').css({visibility: 'visible'});
+}
+
+// Hide canvas
+$('#canvas').css({visibility: 'hidden'});
+
+yepnope({
+	test: Modernizr.csstransforms,
+	yep: ['js/lib/turn.js', 'css/jquery.ui.css'],
+	nope: ['js/lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['css/book.css', 'js/pages.js'],
+	complete: loadApp
+});
+
+</script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

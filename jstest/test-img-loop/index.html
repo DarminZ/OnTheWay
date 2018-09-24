@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test img loop</title>
+</head>
+<body>
+    <div class="img-loop" id="img-loop">
+        <img src="images/1.jpg">
+        <img src="images/2.jpg">
+        <img src="images/3.jpg">
+        <img src="images/4.jpg">
+        <img src="images/5.jpg">
+        <img src="images/6.jpg">
+    </div>
+
+<script type="text/javascript">
+    var imgLooper = document.getElementById("img-loop");
+    var imgs = imgLooper.children;
+    var size = imgs.length;
+    function loadImgLoop() {
+        for(var i = 0; i < size; i++) {
+            if (!hasClass(imgs[i], "img" + i)) {
+                addClass(imgs[i], "img" + i);
+                addClass(imgs[i], "img");
+                imgs[i].onmousedown = function (e) {
+                    e.preventDefault();
+                };
+            }
+        }
+        addClass(imgs[0], "current");
+        if (size > 1) {
+            addClass(imgs[1], "next");
+            addClass(imgs[size - 1], "prev")
+        }
+    }
+
+    loadImgLoop();
+
+    function turnNext() {
+        var prev = document.getElementsByClassName("prev")[0];
+        removeClass(prev, "prev");
+        var current = document.getElementsByClassName("current")[0];
+        removeClass(current, "current");
+        addClass(current, "prev");
+        var next = document.getElementsByClassName("next")[0];
+        removeClass(next, "next");
+        addClass(next, "current");
+        var nextNumber = parseInt(next.className.match(new RegExp('(\\s|^)img([0-9]+)(\\s|$)'))[0].trim().slice(3));
+        if (next !== imgs[size - 1]){
+            addClass(document.getElementsByClassName("img"+(nextNumber+1))[0], "next");
+        }else {
+            addClass(imgs[0], "next")
+        }
+    }
+    function turnPrev() {
+        var next = document.getElementsByClassName("next")[0];
+        removeClass(next, "next");
+        var current = document.getElementsByClassName("current")[0];
+        removeClass(current, "current");
+        addClass(current, "next");
+        var prev = document.getElementsByClassName("prev")[0];
+        removeClass(prev, "prev");
+        addClass(prev, "current");
+        var prevNumber = parseInt(prev.className.match(new RegExp('(\\s|^)img([0-9]+)(\\s|$)'))[0].trim().slice(3));
+        if (prev !== imgs[0]){
+            addClass(document.getElementsByClassName("img"+(prevNumber-1))[0], "prev");
+        }else {
+            addClass(imgs[size - 1], "prev")
+        }
+    }
+
+    var x;
+    document.addEventListener("mousedown",function (e) {
+        x = e.clientX;
+        console.log(x,e.clientX)
+    });
+    document.addEventListener("mouseup",function (e) {
+        console.log(x,e.clientX)
+        if (e.clientX < x && x - e.clientX > 50){
+            turnNext();
+        }else if (e.clientX > x && e.clientX - x > 50) {
+            turnPrev();
+        }
+
+    });
+
+    function hasClass(obj, cls) {
+        return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+    }
+
+    function addClass(obj, cls) {
+        if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+    }
+
+    function removeClass(obj, cls) {
+        if (hasClass(obj, cls)) {
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+            obj.className = obj.className.replace(reg, '');
+        }
+    }
+
+
+</script>
+<style type="text/css" rel="stylesheet">
+    .img-loop{
+        width: 100%;
+    }
+    .img-loop img{
+        margin: auto;
+        width: 498px;
+        position: absolute;
+    }
+    .img{
+        visibility: hidden;
+    }
+    .current{
+        visibility: visible;
+    }
+    .prev{
+
+    }
+    .next{
+
+    }
+</style>
+</body>
+</html>

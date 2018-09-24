@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两栏布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header,.footer {
+            height: 50px;
+            background: #ccc;
+            clear: both;
+        }
+        .container div{
+            float: left;
+        }
+        .nav {
+            background: lightcyan;
+            width: 200px;
+            min-height: 400px;
+            margin-left: -100%;
+        }
+        .main {
+            width: 100%;
+            background: #3e96ff;
+            min-height: 400px;
+            padding-left: 200px;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header">
+        header
+    </div>
+</header>
+<div class="container">
+    <div class="main">
+        main
+    </div>
+    <div class="nav">
+        nav
+    </div>
+</div>
+<footer>
+    <div class="footer">
+        <!--footer-->
+        <p class="center">hello</p>
+    </div>
+</footer>
+</body>
+</html>

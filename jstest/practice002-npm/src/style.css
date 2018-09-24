@@ -1,0 +1,12 @@
+@font-face{
+	font-family: 'SourceCodePro-Black';
+	src: url('./SourceCodePro-Black.ttf.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+
+
+.hello {
+  color: red;
+  font-family: SourceCodePro-Black;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app" v-cloak style="width: 500px; height: 500px; display: flex; vertical-align: center; justify-content: center">
+        <z-select v-model="selected">
+            <z-option v-for="item in options" :value="item.id" :label="item.name" :key="item.id"></z-option>
+        </z-select>
+        value:{{selected}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/emitter.js"></script>
+    <script src="js/select.js"></script>
+    <script src="js/option.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selected: '',
+            options: [
+                {
+                    id: '1',
+                    name: '11'
+                },{
+                    id: '2',
+                    name: '22'
+                }
+            ]
+        }
+    })
+    </script>
+</body>
+</html>
