@@ -17,7 +17,7 @@ var quickSort = function (arr, start, end) {
     }
     if (arr[start]>=value) {start--;}
     swap(arr, left, start);
-    quickSort(arr, left, start);
+    quickSort(arr, left, start - 1);
     quickSort(arr, start+1, right);
 }
 
