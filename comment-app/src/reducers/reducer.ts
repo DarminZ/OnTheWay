@@ -1,14 +1,12 @@
 import * as ActionType from "../constants/ActionType";
 import { CommentInterface } from "../model/Comment";
 
-interface State  {
-  comments?: Array<CommentInterface>
-  comment?: CommentInterface
+interface State {
+  comments?: Array<CommentInterface>;
+  comment?: CommentInterface;
 }
 
-export function reducer(state: State = {
-  comments: []
-}, action: any) {
+export function reducer(state: State, action: any) {
   if (!state) {
     state = { comments: [] };
   }
@@ -18,15 +16,12 @@ export function reducer(state: State = {
     case ActionType.ADD_COMMENTS:
       return { comments: [...state.comments, action.comment] };
     case ActionType.DELETE_COMMENTS:
-      if (action.commentIndex && action.commentIndex > 0) {
-        return {
-          comments: [
-            ...state.comments.slice(0, action.commentIndex),
-            ...state.comments.slice(action.commentIndex + 1)
-          ]
-        };
-      }
-      break;
+      return {
+        comments: [
+          ...state.comments.slice(0, action.commentIndex),
+          ...state.comments.slice(action.commentIndex + 1)
+        ]
+      };
     default:
       return state;
   }

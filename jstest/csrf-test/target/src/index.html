@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ count }}</h1>
+      <button @click="add">增加10000</button>
+      <button @click="subtract">减少10000</button>
+      <button @click="mutiple">乘2</button>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="/static/axios.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        count: 0
+      },
+      mounted() {
+        try {
+          axios.get("/getCount").then(res => {
+            this.count = res.data.count;
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      methods: {
+        add() {
+          try {
+            axios.get("/api1/add?number=10000").then(res => {
+              this.count = res.data.count;
+            });
+          } catch (e) {
+            console.log(e);
+          }
+        },
+        subtract() {
+          try {
+            axios.post("/api1/subtract", { number: 10000 }).then(res => {
+              this.count = res.data.count;
+            });
+          } catch (e) {
+            console.log(e);
+          }
+        },
+        mutiple() {
+          try {
+            axios.get("/api2/mutiple?number=2").then(res => {
+              this.count = res.data.count;
+            });
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      }
+    });
+  </script>
+</html>

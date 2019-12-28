@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "jsx": "preserve",
-    "module": "esnext",
+    "jsx": "react",
+    "module": "commonjs",
     "outDir": "./tsbuild",
     "preserveConstEnums": true,
     "removeComments": true,
@@ -14,26 +14,16 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "esModuleInterop": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "paths": {
+      "@i18n/translation": ["i18n/translation/zh.js"],
+      "@tea/app": ["./node_modules/@tencent/tea-app"],
+      "@tea/app/*": ["./node_modules/@tencent/tea-app/lib/*"],
+      "@tea/component": ["./node_modules/@tencent/tea-component/lib"],
+      "@tea/component/*": ["./node_modules/@tencent/tea-component/lib/*"],
+      "@paas/paas-lib": ["./lib"],
+      "@tencent/qcloud-lib": ["./lib/qcloud-lib"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src/**/*/*.standalone.*",
-    "tea-cli"
-  ],
-  "compileOnSave": false,
-  "include": [
-    "src"
-  ]
+  "exclude": ["node_modules", "dist", "src/**/*/*.standalone.*", "tea-cli"],
+  "compileOnSave": false
 }
