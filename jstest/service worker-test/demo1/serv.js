@@ -36,6 +36,10 @@ app.get('/demo1/index.html', function (req, res) {
     res.sendFile(__dirname + "/" + "index.html");
 })
 
+app.post('/testpost', function (req, res) {
+  res.send('testpost'); // Content-Type: JSON
+})
+
 
 var server = app.listen(3000, function () {
 
