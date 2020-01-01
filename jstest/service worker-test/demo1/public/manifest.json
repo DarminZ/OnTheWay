@@ -1,0 +1,17 @@
+{
+  "name": "demo1",
+  "short_name": "demo1",
+  "description": "demo1",
+  "display": "standalone",
+  "start_url": "/demo1/index.html",
+  "orientation": "any",
+  "background_color": "#ACE",
+  "theme_color": "#ACE",
+  "icon": [
+    {
+      "src": "/img/icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,3 +1,6 @@
+
+
+
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open('v1').then(function(cache) {
@@ -17,6 +20,7 @@ self.addEventListener('fetch', function(event) {
         // caches.match() always resolves
         // but in case of success response will have value
         if (response !== undefined) {
+            console.log('cached', response)
             return response;
         } else {
             return fetch(event.request).then(function (response) {
@@ -27,7 +31,7 @@ self.addEventListener('fetch', function(event) {
 
                 caches.open('v1').then(function (cache) {
                     cache.put(event.request, responseClone);
-                    console.log('cache', event.request)
+                    console.log('cache', event.request, responseClone)
                 });
                 return response;
             }).catch(function (e) {

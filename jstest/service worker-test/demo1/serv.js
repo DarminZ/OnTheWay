@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
@@ -28,8 +28,10 @@ app.get('/nocache', function (req, res) {
     res.send('nocache'); // Content-Type: JSON
 })
 
-app.get('/tata', function (req, res) {
-    res.send('tsert'); // Content-Type: JSON
+app.get('/arr', function (req, res) {
+    res.send([
+        {a: 1, b: 2}, {a: 3, b: 4}
+    ]); // Content-Type: JSON
 })
 
 app.get('/demo1/index.html', function (req, res) {
