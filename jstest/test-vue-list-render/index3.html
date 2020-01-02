@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>list render</title>
+</head>
+<body>
+<div id="app" v-cloak>
+  <div>
+    <ul>
+      <template v-for="nodeState in nodeStates">
+        <li v-if="Object.keys(nodeState).length > 0">{{(Object.keys(nodeState))[0]}}
+          <div v-if="nodeState[(Object.keys(nodeState))[0]].length">
+            <ul>
+              <template v-for="subState in nodeState[(Object.keys(nodeState))[0]]">
+                <li v-if="Object.keys(subState).length > 0">{{(Object.keys(subState))[0]}}
+                  <div v-if="subState[(Object.keys(subState))[0]].length">
+                    <ul>
+                      <template v-for="checkItem in subState[(Object.keys(subState))[0]]">
+                        <li v-if="Object.keys(checkItem).length > 0">{{(Object.keys(checkItem))[0]}}
+                          <div>
+                            {{checkItem[(Object.keys(checkItem))[0]].status}}-{{checkItem[(Object.keys(checkItem))[0]].msg}}
+                          </div>
+                        </li>
+                      </template>
+                    </ul>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </li>
+      </template>
+    </ul>
+    <button v-if="nodeStates.length === 0" @click="initData">init</button>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      nodeStates: []
+    },
+    methods: {
+      initData: function () {
+        this.nodeStates = [
+          {
+            apiServer: [
+              {
+                apiServer1: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    }
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              }, {
+                apiServer2: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    },
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              },
+            ]
+          }, {
+            nodeState2: [
+              {
+                subState1: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    },
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              }, {
+                subState2: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    },
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              },
+            ]
+          }, {
+            nodeState3: [
+              {
+                subState1: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    },
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              }, {
+                subState2: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    },
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              },
+            ]
+          }, {
+            nodeState4: [
+              {
+                subState1: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    },
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              }, {
+                subState2: [
+                  {
+                    checkItem1: {
+                      status: 1,
+                      msg: '1'
+                    },
+                  }, {
+                    checkItem2: {
+                      status: 0,
+                      msg: '0'
+                    }
+                  }
+                ]
+              },
+            ]
+          }
+        ]
+      },
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list render</title>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div>
+        <ul>
+            <template v-for="item of listData">
+                <li>{{item.key1}}
+                    <div v-show="item.key2">{{item.key1}}:{{item.key2}}</div>
+                </li>
+            </template>
+        </ul>
+        <button v-if="listData.length === 0" @click="initData">init</button>
+        <button v-else @click="changekey2">change</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            listData: []
+        },
+        methods:{
+            initData: function () {
+                this.listData = [
+                    {
+                        key1: 'value1.1',
+                        key2: true
+                    },{
+                        key1: 'value2.1',
+                        key2: false
+                    },{
+                        key1: 'value3.1',
+                        key2: true
+                    },{
+                        key1: 'value4.1',
+                        key2: false
+                    }
+                ]
+            },
+            changekey2: function () {
+                this.listData.forEach(function(item){
+                    item.key2 = !item.key2;
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>
