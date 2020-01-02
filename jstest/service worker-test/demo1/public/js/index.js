@@ -1,5 +1,5 @@
 // register service worker
-
+console.log('index');
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
 
