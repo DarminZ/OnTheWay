@@ -10,7 +10,6 @@ ws.createServer(function (conn) {
                 str1 = conn;
                 clientReady = true;
                 str1.sendText("欢迎你" + str);
-
             }
         } else if (!serverReady) {
             if (str.indexOf('close') >= 0) {
@@ -43,7 +42,6 @@ ws.createServer(function (conn) {
                         str2 = null;
                         return;
                     }
-
                 }
             }
         }

@@ -9,18 +9,15 @@
   <div>
     <ul>
       <template v-for="nodeState in nodeStates">
-        <li v-if="Object.keys(nodeState).length > 0">{{(Object.keys(nodeState))[0]}}
-          <div v-if="nodeState[(Object.keys(nodeState))[0]].length">
+        <li v-if="nodeState.checkName">{{`${nodeState.checkName}-${nodeState.msg}-${nodeState.state}`}}
+          <div v-if="nodeState.childrens">
             <ul>
-              <template v-for="subState in nodeState[(Object.keys(nodeState))[0]]">
-                <li v-if="Object.keys(subState).length > 0">{{(Object.keys(subState))[0]}}
-                  <div v-if="subState[(Object.keys(subState))[0]].length">
+              <template v-for="subState in nodeState.childrens">
+                <li v-if="subState.checkName">{{`${subState.checkName}-${subState.msg}-${subState.state}`}}
+                  <div v-if="subState.childrens">
                     <ul>
-                      <template v-for="checkItem in subState[(Object.keys(subState))[0]]">
-                        <li v-if="Object.keys(checkItem).length > 0">{{(Object.keys(checkItem))[0]}}
-                          <div>
-                            {{checkItem[(Object.keys(checkItem))[0]].status}}-{{checkItem[(Object.keys(checkItem))[0]].msg}}
-                          </div>
+                      <template v-for="checkItem in subState.childrens">
+                        <li v-if="checkItem.checkName">{{`${checkItem.checkName}-${checkItem.msg}-${checkItem.state}`}}
                         </li>
                       </template>
                     </ul>
@@ -46,132 +43,280 @@
       initData: function () {
         this.nodeStates = [
           {
-            apiServer: [
+            checkName: 'apiServer',
+            state: null,
+            normal: null,
+            abnormal: null,
+            msg: '',
+            childrens: [
               {
-                apiServer1: [
+                checkName: 'apiServer1',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    }
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
               }, {
-                apiServer2: [
+                checkName: 'apiServer2',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    },
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
-              },
+              }
             ]
           }, {
-            nodeState2: [
+            checkName: 'nodeState2',
+            state: null,
+            normal: null,
+            abnormal: null,
+            msg: '',
+            childrens: [
               {
-                subState1: [
+                checkName: 'subState',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    },
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
               }, {
-                subState2: [
+                checkName: 'subState2',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    },
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
-              },
+              }
             ]
           }, {
-            nodeState3: [
+            checkName: 'nodeState3',
+            state: null,
+            normal: null,
+            abnormal: null,
+            msg: '',
+            childrens: [
               {
-                subState1: [
+                checkName: 'aaServer1',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    },
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
               }, {
-                subState2: [
+                checkName: 'aaServer2',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    },
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
-              },
+              }
             ]
           }, {
-            nodeState4: [
+            checkName: 'nodeState3',
+            state: null,
+            normal: null,
+            abnormal: null,
+            msg: '',
+            childrens: [
               {
-                subState1: [
+                checkName: 'ss',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    },
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
               }, {
-                subState2: [
+                checkName: 'sss',
+                state: null,
+                normal: null,
+                abnormal: null,
+                msg: '',
+                childrens: [
                   {
-                    checkItem1: {
-                      status: 1,
-                      msg: '1'
-                    },
+                    checkName: 'checkItem1',
+                    state: 1,
+                    normal: null,
+                    abnormal: null,
+                    msg: '1',
+                    childrens: null
                   }, {
-                    checkItem2: {
-                      status: 0,
-                      msg: '0'
-                    }
+                    checkName: 'checkItem2',
+                    state: 2,
+                    normal: null,
+                    abnormal: null,
+                    msg: '2',
+                    childrens: null
+                  }, {
+                    checkName: 'checkItem3',
+                    state: 3,
+                    normal: null,
+                    abnormal: null,
+                    msg: '3',
+                    childrens: null
                   }
                 ]
-              },
+              }
             ]
           }
         ]

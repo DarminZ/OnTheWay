@@ -8,6 +8,10 @@ var settings = require('./Settings');
 var session = require("express-session");
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
+var fs = require('fs');
+
+var accessLogfile = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLogfile = fs.createWriteStream('error.log', {flags: 'a'});
 
 var indexRouter = require('./routes/index');
 var app = express();
@@ -17,6 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayout);
 
+app.use(logger("combined", {stream: accessLogfile}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -58,6 +63,7 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+    errorLogfile.write('[' + new Date() + ']\n' + err.stack + '\n');
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
