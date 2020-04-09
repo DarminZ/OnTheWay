@@ -1,0 +1,9 @@
+{
+  "name": "test-hterm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "react-hterm": "^0.0.0-alpha.1"
+  }
+}

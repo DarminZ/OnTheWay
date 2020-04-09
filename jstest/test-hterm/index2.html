@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+      }
+      #terminal {
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="terminal"></div>
+  </body>
+  <script src="./hterm.js"></script>
+  <script>
+    function setupHterm() {
+      const term = new hterm.Terminal();
+      term.onTerminalReady = function() {
+        const io = this.io.push();
+
+        io.onVTKeystroke = string => {
+          switch (string) {
+            case "\r":
+              io.println("");
+              break;
+            case "\x7f":
+              // \x08 = backspace, \x1b[K = 'Erase in line'.
+              io.print("\x08\x1b[K");
+              break;
+            default:
+              io.print(string);
+              break;
+          }
+        };
+        io.sendString = io.print;
+        this.setCursorVisible(true);
+
+        this.keyboard.characterEncoding = "raw";
+        this.keyboard.bindings.addBinding("F11", "PASS");
+        this.keyboard.bindings.addBinding("Ctrl-R", "PASS");
+      };
+      term.decorate(document.querySelector("#terminal"));
+      term.installKeyboard();
+
+      // Useful for console debugging.
+      window.term_ = term;
+    }
+    window.onload = () => lib.init(setupHterm);
+  </script>
+</html>

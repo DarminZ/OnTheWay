@@ -1,7 +1,7 @@
 // register service worker
 console.log('index');
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', {scope: '/'}).then(function (reg) {
+  navigator.serviceWorker.register('/sw.js', {scope: '/demo1/'}).then(function (reg) {
 
     if (reg.installing) {
       console.log('Service worker installing');
@@ -17,12 +17,15 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-
-
 document.getElementById('testBtn').addEventListener('click', e => {
   fetch('/testpost', {method: 'POST'}).then(res => res.json()).catch(e => {
     console.log(e)
   }).then(response => {
     console.log(response)
-  })
+  });
+  fetch('/testget', {method: 'GET'}).then(res => res.json()).catch(e => {
+    console.log(e)
+  }).then(response => {
+    console.log(response)
+  });
 });

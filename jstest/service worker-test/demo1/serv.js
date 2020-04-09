@@ -4,6 +4,9 @@ var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+var options = {
+    maxAge: 3600000
+};
 app.use(express.static('public'));
 
 /**
@@ -17,6 +20,11 @@ app.use(function (req, res, next) {
 })
 
 app.get('/', function (req, res) {
+    res.send('index'); // Content-Type: JSON
+})
+
+app.get('/testget', function (req, res) {
+    res.set(options);
     res.send('index'); // Content-Type: JSON
 })
 
@@ -42,6 +50,13 @@ app.post('/testpost', function (req, res) {
   res.send('testpost'); // Content-Type: JSON
 })
 
+let report = require('./report')
+app.get('/report', function (req, res) {
+    res.send(report);
+})
+app.post('/report', function (req, res) {
+    res.send(report);
+})
 
 var server = app.listen(3000, function () {
 
