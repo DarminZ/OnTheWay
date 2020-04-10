@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body style="background: #ccc">
+  <body style="background: #ccc;">
     <button id="btn1">showList1</button>
     <button id="btn2">showList2</button>
     <button id="btn3">showList3</button>
@@ -15,8 +15,8 @@
   </body>
   <script>
     const view = document.getElementById("view");
-    const liList = [...Array(100000)].map( (_, index) =>
-      `<li style="height: 22px">${index} : ${new Date()}</li>`
+    const liList = [...Array(100000)].map(
+      (_, index) => `<li style="height: 22px">${index} : ${new Date()}</li>`
     );
     function inner1() {
       let ulText = `<ul style="background: #eee;">${liList.join("")}</ul>`;
@@ -44,8 +44,11 @@
       let relLiList = liList.slice(start, end);
       view.style = "height: 440px; overflow: scroll; position: relative;";
       let ulText = `<div style="height: ${
-      liList.length * 22}px; position: absolute; width: 100%; z-index: 1;
-      "></div><div id="relLi" style="position: fixed; background: #fff;">${relLiList.join("")}</div>`;
+        liList.length * 22
+      }px; position: absolute; width: 100%; z-index: 1;
+      "></div><div id="relLi" style="position: fixed; background: #fff;">${relLiList.join(
+        ""
+      )}</div>`;
       view.innerHTML = ulText;
     }
     const btn3 = document.getElementById("btn3");
@@ -55,7 +58,8 @@
         start = Math.floor(view.scrollTop / 22);
         end = start + 20;
         let relLiList = liList.slice(start, end);
-        document.getElementById('relLi').innerHTML = relLiList.join("");
+        document.getElementById("relLi") &&
+          (document.getElementById("relLi").innerHTML = relLiList.join(""));
       };
     };
   </script>
