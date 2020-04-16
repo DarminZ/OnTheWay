@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>a</title>
+</head>
+<body>
+<iframe src="http://c.test.com/c.html" id="frame"></iframe>
+<script type="text/javascript">
+  // document.domain = 'test.com';
+  function load(){
+    console.log(frame.contentWindow.name);
+  }
+
+  function getSomething() {
+    frame.contentWindow.getSomething();
+  }
+</script>
+</body>
+</html>

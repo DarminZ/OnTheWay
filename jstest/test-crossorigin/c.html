@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>a</title>
+</head>
+<body>
+<script
+    src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  document.domain = 'test.com';
+  var name = 'test';
+  var getSomething = function(cb) {
+    $.get('/', cb)
+  }
+
+
+  window.onmessage = function(e){
+    console.log('get',e)
+    if (e.data === 'name') {
+      //向父级（发射源）发送消息
+      e.source.postMessage(name,'http://b.test.com');
+    } else {
+      getSomething((r) => {e.source.postMessage(r,'http://b.test.com');});
+    }
+  }
+</script>
+</body>
+</html>

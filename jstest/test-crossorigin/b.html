@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>a</title>
+</head>
+<body>
+<iframe src="http://c.test.com/c.html" id="frame"></iframe>
+<script type="text/javascript">
+  function load(){
+    frame.contentWindow.postMessage('name','http://c.test.com')
+  }
+
+  function getSomething() {
+    frame.contentWindow.postMessage('getSomething', 'http://c.test.com')
+  }
+  window.onmessage = function(e){
+    console.log(e.data)
+  }
+</script>
+</body>
+</html>
