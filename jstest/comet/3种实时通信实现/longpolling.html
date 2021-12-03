@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Long Polling</title>
+</head>
+<body>
+<div id="list">
+</div>
+<script>
+  const listDiv = document.getElementById('list');
+
+  function showMessage(message) {
+    let messageElem = document.createElement('div');
+    messageElem.append(message);
+    listDiv.append(messageElem);
+  }
+
+  async function subscribe() {
+    let response = await fetch('longpolling');
+
+    if (response.status == 200) {
+      let message = await response.text();
+      showMessage(message);
+      await subscribe();
+    } else {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await subscribe();
+    }
+  }
+
+  subscribe();
+
+</script>
+</body>
+</html>
