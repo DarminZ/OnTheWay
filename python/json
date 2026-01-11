@@ -1,0 +1,11 @@
+{
+    "name": "abcd",
+    "age": 18,
+    "city": "Beijing",
+    "friends": [
+        "efgh",
+        "ijkl",
+        "mnop"
+    ],
+    "phone": 123321
+}
