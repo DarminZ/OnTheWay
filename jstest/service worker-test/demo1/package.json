@@ -7,7 +7,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nodejs-websocket": "^1.7.1"
   },
   "devDependencies": {
